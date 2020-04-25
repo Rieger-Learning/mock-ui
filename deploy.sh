@@ -1,5 +1,5 @@
 rm -rf dist
-git worktree add dist gh-pages
+git worktree add -f dist gh-pages
 npm run build
 cd dist
 git add .

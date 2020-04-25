@@ -1,0 +1,12 @@
+{
+  "name": "mock-ui",
+  "version": "1.0.0",
+  "dependencies": {},
+  "scripts": {
+    "dev": "parcel ./client/index.html",
+    "build": "parcel build ./client/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

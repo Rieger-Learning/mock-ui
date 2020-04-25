@@ -1,2 +1,4 @@
 # mock-ui
-A mock ui done in React and Redux. 
+A mock ui done in VueJS. 
+
+Built with parcel. 

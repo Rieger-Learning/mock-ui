@@ -1,4 +1,5 @@
 rm -rf dist
+git rm -r dist
 npm run build
 cd dist
 git add .

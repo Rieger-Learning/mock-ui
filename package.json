@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "parcel ./client/index.html",
-    "build": "parcel build ./client/index.html"
+    "build": "parcel build ./client/index.html --public-url /mock-ui"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.2",

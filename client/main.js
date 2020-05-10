@@ -1,7 +1,7 @@
 // src/main.js
 
 import Vue from 'vue'
-import App from './App'
+import App from './main'
 
 new Vue({
     el: '#app',

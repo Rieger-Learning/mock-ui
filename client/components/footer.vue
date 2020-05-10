@@ -4,7 +4,7 @@
         <div>
             Found an issue?
             <a href="https://github.com/Rieger-Learning/mock-ui/issues/new" target="_blank">
-                <i class="fas fa-bug"></i>
+                <font-awesome-icon icon="bug" />
                 Report a bug</a>.
         </div>
         <div class="mt-2">

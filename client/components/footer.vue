@@ -13,9 +13,8 @@
     </b-container>
 </template>
 
-<style lang="scss">
-    #site-footer {
-    }
+<style scoped>
+
 </style>
 
 <script>

@@ -3,6 +3,7 @@
         <b-nav align="left">
             <b-navbar-brand to="/">Rieger Learning</b-navbar-brand>
             <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/login"> Login </b-nav-item>
         </b-nav>
     </b-navbar>
 </template>

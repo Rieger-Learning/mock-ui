@@ -2,7 +2,7 @@
     <div id="app">
         <nav-bar></nav-bar>
         <router-view></router-view>
-        <site-footer></site-footer>
+        <site-footer><fa-icon :icon="['fas', 'bug']" size="2x" :spin="spin" /></site-footer>
     </div>
 </template>
 
@@ -18,7 +18,7 @@
         },
         data() {
             return {
-                message: 'Using Parcel In A Vue.js App',
+                spin: false
             };
         },
     };

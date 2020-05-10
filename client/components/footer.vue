@@ -4,8 +4,7 @@
         <div>
             Found an issue?
             <a href="https://github.com/Rieger-Learning/mock-ui/issues/new" target="_blank">
-                <font-awesome-icon icon="bug" />
-                Report a bug</a>.
+                Report a bug</a>. <font-awesome-icon :icon="['fas', 'bug']" />
         </div>
         <div class="mt-2">
             <small>v.{{ version }}</small>

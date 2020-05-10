@@ -8,25 +8,29 @@ const app = express();
 
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const cors = require('cors');
 
 //We talk in JSON for the body. 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-
-
-/*************************************************
- * This is the CORS section
- * CORS is required because we aren't going to open 
- * this up to anyone. We want to know where our 
- * requests are coming from. Security first. 
+/**************************************************
+ * This is the passport section
  *************************************************/
-//CORS
-const cors = require('cors');
+//This tells us to use Cookie session storage on the client. 
+// express-session allows us to move to server side. 
+//It basically only saves a UUID and then forces a look up. 
+//Cool but not what we need right now. 
+app.use(cookieSession({
+    name: 'RiegerLearning',
+    keys: ['vueauthrandomkey'],
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours 
+}));
 
-var allowedOrigins = ['http://localhost:1234',
+const allowedOrigins = ['http://localhost:1234',
+    'http://localhost:1235',
     'https://rieger-learning.github.io/'];
-
+    
 app.use(cors({
     origin: function (origin, callback) {
         // allow requests with no origin 
@@ -41,24 +45,12 @@ app.use(cors({
     }
 }));
 
-/*************************************************
- * This ends the CORS section
- *************************************************/
-
-/**************************************************
- * This is the passport section
- *************************************************/
-//This tells us to use Cookie session storage on the client. 
-// express-session allows us to move to server side. 
-//It basically only saves a UUID and then forces a look up. 
-//Cool but not what we need right now. 
-app.use(cookieSession({
-    name: 'RiegerLearning',
-    keys: ['vueauthrandomkey'],
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours 
-}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+ //Bind to our managers. 
+ const RouterEndpoint = require('./managers/routerEndpoints.js');
+ app.use(RouterEndpoint);
 
 //Apparently passport is a singleton.. this coule be cleaned up.
 const PassportBinding = require('./engines/passportBinding');
@@ -67,10 +59,6 @@ PassportBinding.bindAll(passport);
 /*************************************************
  * This ends the passport section
  *************************************************/
-
- //Bind to our managers. 
-const RouterEndpoint = require('./managers/routerEndpoints.js');
-app.use(RouterEndpoint);
 
  app.listen(1235, () => {
     console.log("Example app listening on port 1235")

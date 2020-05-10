@@ -7,17 +7,26 @@ const express = require('express');
 const app = express();
 
 const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
 const passport = require('passport');
 
-// getting the local authentication type
-const LocalStrategy = require('passport-local').Strategy;
+//We talk in JSON for the body. 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
+
+
+/*************************************************
+ * This is the CORS section
+ * CORS is required because we aren't going to open 
+ * this up to anyone. We want to know where our 
+ * requests are coming from. Security first. 
+ *************************************************/
 //CORS
 const cors = require('cors');
 
 var allowedOrigins = ['http://localhost:1234',
     'https://rieger-learning.github.io/'];
+
 app.use(cors({
     origin: function (origin, callback) {
         // allow requests with no origin 
@@ -32,8 +41,13 @@ app.use(cors({
     }
 }));
 
-//We talk in JSON for the body. 
-app.use(bodyParser.json());
+/*************************************************
+ * This ends the CORS section
+ *************************************************/
+
+/**************************************************
+ * This is the passport section
+ *************************************************/
 //This tells us to use Cookie session storage on the client. 
 // express-session allows us to move to server side. 
 //It basically only saves a UUID and then forces a look up. 
@@ -43,92 +57,21 @@ app.use(cookieSession({
     keys: ['vueauthrandomkey'],
     maxAge: 24 * 60 * 60 * 1000 // 24 hours 
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-let users = [
-    {
-        id: 1,
-        name: "Jude",
-        email: "user@email.com",
-        password: "password"
-    },
-    {
-        id: 2,
-        name: "Emma",
-        email: "emma@email.com",
-        password: "password2"
-    },
-];
+//Apparently passport is a singleton.. this coule be cleaned up.
+const PassportBinding = require('./engines/passportBinding');
+PassportBinding.bindAll(passport);
 
-app.post("/api/login", (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
-        if (err) {
-            return next(err);
-        }
+/*************************************************
+ * This ends the passport section
+ *************************************************/
 
-        if (!user) {
-            return res.status(400).send([user, "Cannot log in", info])
-        }
+ //Bind to our managers. 
+const RouterEndpoint = require('./managers/routerEndpoints.js');
+app.use(RouterEndpoint);
 
-        req.login(user, (err) => {
-            res.send("Logged in")
-        })
-    })(req, res, next)
-});
-
-app.get('/api/logout', function (req, res) {
-    req.logout();
-    console.log("logged out")
-    return res.send();
-});
-
-const authMiddleware = (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        res.status(401).send('You are not authenticated')
-    } else {
-        return next()
-    }
-};
-
-app.get("/api/user", authMiddleware, (req, res) => {
-    let user = users.find((user) => {
-        return user.id === req.session.passport.user
-    })
-    console.log([user, req.session])
-    res.send({ user: user })
-});
-
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-},
-    (username, password, done) => {
-        let user = users.find((user) => {
-            return user.email === username && user.password === password
-        })
-
-        if (user) {
-            done(null, user)
-        } else {
-            done(null, false, { message: 'Incorrect username or password' })
-        }
-    }
-));
-
-passport.serializeUser((user, done) => {
-    done(null, user.id)
-});
-
-passport.deserializeUser((id, done) => {
-    let user = users.find((user) => {
-        return user.id === id
-    })
-
-    done(null, user)
-});
-
-app.listen(1235, () => {
+ app.listen(1235, () => {
     console.log("Example app listening on port 1235")
 });

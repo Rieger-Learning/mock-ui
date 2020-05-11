@@ -15,10 +15,10 @@ import { dom } from '@fortawesome/fontawesome-svg-core'
 dom.watch()
 ***********************************************/
 import Vue from 'vue'
-import {library} from '@fortawesome/fontawesome-svg-core'
+import {library, icon} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-import {faBug} from '@fortawesome/free-solid-svg-icons'
+import {faBug} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBug)
+library.add(faBug);
 
 Vue.component('fa-icon', FontAwesomeIcon)

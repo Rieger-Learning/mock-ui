@@ -2,6 +2,8 @@
 <template>
     <div>
         <h2>Login</h2>
+        <a href="http://127.0.0.1:1235/auth/github">Login with GitHub</a>
+        Or login with Rieger Learning.
         <b-form v-on:submit="login">
             <b-form-input 
             v-model="email" 
@@ -12,6 +14,7 @@
             name="password"></b-form-input>
             <b-button type="submit" variant="primary">Submit</b-button>
         </b-form>
+        <a href="#" v-on:click="logout"> Logout </a>
     </div>
 </template>
 
@@ -38,7 +41,7 @@ export default {
             password: password
             };
             
-        axios.post("http://localhost:1235/api/login", data)
+        axios.post("http://127.0.0.1:1235/api/login", data)
             .then((response) => {
                 console.log("Logged in");
                 router.push("/home");
@@ -48,6 +51,12 @@ export default {
             });
       }
       login();
+    },
+    logout: function (e) {
+      axios.get("/api/logout")
+        .then(() => {
+          router.push("/")
+        })
     }
   }
 }

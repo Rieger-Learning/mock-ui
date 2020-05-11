@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+#This is where we are going to keep our github secret for now.
+#This is passed around to whoever works on server piece. 
+server/secret-config.js

@@ -10,6 +10,7 @@
 
 <script>
     import Landing from '../components/landing.vue';
+    
     export default {
         name: "home.vue",
         components: {

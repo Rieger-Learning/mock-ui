@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import App from './app';
 import router from './router';
+import './icons'
 
 /***********************************************
  * Bootstrap
@@ -29,10 +30,3 @@ new Vue({
 });
 
 
-/***********************************************
- * FONTAWESOME
- ***********************************************/
-import '@fortawesome/fontawesome-free/css/all.css'
-import '@fortawesome/fontawesome-free/js/all.js'
-
-new Vue({ router, store, render: h=> h(App),}).$mount('#app')

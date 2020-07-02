@@ -1,0 +1,21 @@
+.nav {
+    background-color: rgb(68, 84, 85);
+    box-sizing: border-box;
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: left;
+}
+#logo {
+    font-family: 'retro';
+    font-size: xx-large;
+    color: peru;
+}
+.link a {
+    font-family: 'caps';
+    font-size: larger;
+    color: white;
+}
+.link a:hover {
+    color: rgb(89, 124, 104);
+}

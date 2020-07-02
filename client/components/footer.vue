@@ -4,8 +4,7 @@
         <div>
             Found an issue?
             <a href="https://github.com/Rieger-Learning/mock-ui/issues/new" target="_blank">
-                <i class="fas fa-bug"></i>
-                Report a bug</a>.
+                Report a bug <i class="fas fa-bug"></i></a> 
         </div>
         <div class="mt-2">
             <small>v.{{ version }}</small>

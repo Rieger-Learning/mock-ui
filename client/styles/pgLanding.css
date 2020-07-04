@@ -1,0 +1,44 @@
+
+/*LANDING PAGE*/
+.landing-body .jumbotron {
+    background-color: rgb(68, 84, 85);
+    
+}
+.bv-example-row {
+    margin-top: 50px;
+}
+
+/*BUTTONS*/
+#confirm {
+    font-family: 'caps';
+    background-color: rgb(88, 109, 88);
+    border: 1px solid;
+}
+#login {
+    font-family: 'caps';
+    background-color: peru;
+    border: 1px solid;
+}
+
+/*HEADERS*/
+.lead, #title {
+    font-family: 'retro';
+    font-size: 100px;
+    color: peru;
+}
+#subs {
+    font-family: 'caps';
+    font-size: xx-large;
+    color: rgb(255, 255, 255);
+}
+
+/*FONTS*/
+@font-face {
+    font-family: 'retro';
+    src: url('../Fonts/typewriter-press/Typewriter-Press/Typewriter.woff');
+}
+
+@font-face {
+    font-family: 'caps';
+    src: url('../Fonts/moonglade-font/MoongladeDemoBold-jOzM.ttf');
+}

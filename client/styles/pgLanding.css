@@ -35,10 +35,15 @@
 /*FONTS*/
 @font-face {
     font-family: 'retro';
-    src: url('../Fonts/typewriter-press/Typewriter-Press/Typewriter.woff');
+    src: url('../Fonts/haglos-font/HaglosRegular-WyJ1O.otf');
 }
 
 @font-face {
     font-family: 'caps';
     src: url('../Fonts/moonglade-font/MoongladeDemoBold-jOzM.ttf');
+}
+
+@font-face {
+    font-family: 'typewriter';
+    src: url('../Fonts/typewriter-press/Typewriter-Press/Typewriter.woff');
 }

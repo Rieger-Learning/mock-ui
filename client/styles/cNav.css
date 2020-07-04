@@ -1,5 +1,5 @@
 .nav {
-    background-color: rgb(68, 84, 85);
+    background-color: rgb(141, 170, 172);
     box-sizing: border-box;
     display: inline-block;
     flex-wrap: wrap;
@@ -8,14 +8,15 @@
 }
 #logo {
     font-family: 'retro';
-    font-size: xx-large;
-    color: peru;
+    font-size: 3rem;
+    color: rgb(163, 93, 23);
+    
 }
-.link a {
+#link a {
     font-family: 'caps';
     font-size: larger;
     color: white;
 }
-.link a:hover {
-    color: rgb(89, 124, 104);
+#link a:hover {
+    color: #27311d;
 }

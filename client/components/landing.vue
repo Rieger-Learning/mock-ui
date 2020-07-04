@@ -12,7 +12,7 @@
             </p>
 
             <b-button variant="primary" href="#" id="confirm">Create</b-button>
-            <b-button variant="success" href="#" id="login">Login</b-button>
+            <b-button variant="success" href="/login" id="login">Login</b-button>
 
         </b-jumbotron>
     </div> 
